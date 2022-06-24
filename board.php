@@ -45,7 +45,7 @@ if (!empty($_POST['message'])) {
     }
 }
 
-$sql = 'SELECT * FROM `comments` WHERE boardId = :boardId ORDER BY createdAt';
+$sql = 'SELECT * FROM `comments`, `users` WHERE boardId = :boardId AND comments.userId = users.id ORDER BY comments.createdAt';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
 $stmt->execute();
@@ -74,7 +74,7 @@ $comments = $stmt->fetchAll();
     <ul>
         <?php
         foreach ($comments as $comment) {
-            echo "<li>{$comment['comment']}</li>";
+            echo "<li>{$comment['comment']} {$comment['name']}</li>";
         }
         ?>
     </ul>
