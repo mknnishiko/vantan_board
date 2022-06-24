@@ -36,8 +36,10 @@ if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['name
 	    $_SESSION['name'] = $name;
 	    $_SESSION['email'] = $email;
 	    $_SESSION['password'] = $password;
+	    header('Location: /vantan_board/index.php');
+	    exit;
     } else {
-        $message = '登録に失敗しました';
+	    $message = '登録に失敗しました';
     }
 }
 
