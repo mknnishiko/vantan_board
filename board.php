@@ -45,7 +45,7 @@ if (!empty($_POST['message'])) {
     }
 }
 
-$sql = 'SELECT * FROM `comments`, `users` WHERE boardId = :boardId AND comments.userId = users.id ORDER BY comments.createdAt';
+$sql = 'SELECT * FROM `comments` LEFT JOIN `users` ON comments.userId = users.id WHERE boardId = :boardId ORDER BY comments.createdAt';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
 $stmt->execute();
