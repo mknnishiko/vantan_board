@@ -1,18 +1,17 @@
 <?php
 
-class BoardEntity {
-
+class BoardEntity
+{
     public $id;
     public $title;
+    public $userId;
     public $createdAt;
-    public $updatedAt;
 
     public function __construct($data)
     {
         $this->id = $data['id'];
-        $this->userId = $data['userId'];
         $this->title = $data['title'];
+        $this->userId = $data['userId'];
         $this->createdAt = $data['createdAt'];
-        $this->updatedAt = $data['updatedAt'];
     }
 }
