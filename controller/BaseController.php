@@ -36,7 +36,7 @@ abstract class BaseController
             session_start();
             $mail = empty($_SESSION['email']) ? '' : $_SESSION['email'];
             $password = empty($_SESSION['password']) ? '' : $_SESSION['password'];
-            $this->user = $this->userDao->findByMail($email, $password);
+            $this->user = $this->userDao->findByEmail($email, $password);
             // ログイン必須でログインしていなかったらログインページに遷移する
             if ($this->isLogin && empty($this->user)) {
                 header('Location: ./login.php');
