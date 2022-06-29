@@ -6,7 +6,7 @@ require_once  __DIR__ . '/../libs/dao/BoardDao.php';
 class IndexController extends BaseController {
 
     // 読み込むテンプレートファイルを設定
-    protected $template = 'index.tpl';
+    protected $template = 'templates/index.tpl';
 
     // ログイン必須でなくす
     protected $isLogin = false;
