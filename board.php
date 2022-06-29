@@ -29,7 +29,7 @@ if (empty($board)) {
 }
 
 if (!empty($_POST['message'])) {
-    $message = $_POST['message'];
+    $message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
 
     $sql = 'INSERT INTO `comments` (boardId, userId, comment, createdAt)';
     $sql .= ' VALUES (:boardId, :userId, :comment, NOW())';
