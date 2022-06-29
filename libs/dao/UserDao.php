@@ -8,7 +8,7 @@ class UserDao extends Database
     public function findByEmail($email)
     {
         $sql = 'SELECT * FROM `users` WHERE email = :email AND password = :password';
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':email', $email, \PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, \PDO::PARAM_STR);
         $stmt->execute();
