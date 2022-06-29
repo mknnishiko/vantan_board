@@ -1,9 +1,9 @@
 <?php
 
-class UserEntity {
-
+class UserEntity
+{
     public $id;
-    private $mail;
+    private $email;
     private $password;
     public $name;
     public $createdAt;
@@ -12,18 +12,20 @@ class UserEntity {
     public function __construct($data)
     {
         $this->id = $data['id'];
-        $this->mail = $data['email'];
+        $this->email = $data['email'];
         $this->password = $data['password'];
         $this->name = $data['name'];
-        $this->created = $data['createdAt'];
-        $this->modified = $data['updatedAt'];
+        $this->createdAt = $data['createdAt'];
+        $this->updatedAt = $data['updatedAt'];
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 }
