@@ -12,7 +12,7 @@ class BoardEntity {
         $this->id = $data['id'];
         $this->userId = $data['userId'];
         $this->title = $data['title'];
-        $this->created = $data['createdAt'];
-        $this->modified = $data['updatedAt'];
+        $this->createdAt = $data['createdAt'];
+        $this->updatedAt = $data['updatedAt'];
     }
 }
