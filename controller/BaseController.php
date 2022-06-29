@@ -1,6 +1,6 @@
 <?php
  
-require_once __DIR__ . '/../library/smarty/Smarty.class.php';
+require_once __DIR__ . '/../library/Smarty.class.php';
 require_once __DIR__ . '/../libs/dao/UserDao.php';
 require_once __DIR__ . '/../libs/entity/UserEntity.php';
  
