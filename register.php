@@ -19,9 +19,9 @@ try {
 }
 
 if (!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['name'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $name = $_POST['name'];
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, "UTF-8");
+    $password = htmlspecialchars($_POST['password'], ENT_QUOTES, "UTF-8");
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES, "UTF-8");
 
     $sql = 'INSERT INTO `users` (name, email, password, createdAt, updatedAt)';
     $sql .= ' VALUES (:name, :email, :password, NOW(), NOW())';
