@@ -17,10 +17,10 @@
      $message = "接続に失敗しました: {$e->getMessage()}";
  }
  
- // 入力が全て入っていたらユーザーを作成する
+ // 入力が全て入っていたらセッションを開始する
  if(!empty($_POST['email']) && !empty($_POST['password'])) {
-     $email = $_POST['email'];
-     $password = $_POST['password'];
+     $email = htmlspecialchars($_POST['email'], ENT_QUOTES, "UTF-8");
+     $password = htmlspecialchars($_POST['password'], ENT_QUOTES, "UTF-8");
  
      $sql = 'SELECT * FROM `users` WHERE email = :email AND password = :password';
      $stmt = $pdo->prepare($sql);
