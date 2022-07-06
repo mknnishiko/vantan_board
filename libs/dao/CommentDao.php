@@ -14,10 +14,6 @@ class CommentDao extends Database
     {
         $comment = htmlspecialchars($message, ENT_QUOTES, "UTF-8");
 
-        echo 'boardId->' . $boardId;
-        echo 'sessionId->' . $userId;
-        echo 'comment->' . $comment;
-
         $sql = 'INSERT INTO `comments` (boardId, userId, comment, createdAt)';
         $sql .= ' VALUES (:boardId, :userId, :comment, NOW())';
         $stmt = $this->pdo->prepare($sql);
