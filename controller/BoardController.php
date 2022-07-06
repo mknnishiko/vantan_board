@@ -20,7 +20,7 @@ class BoardController extends BaseController {
 
         // コメント情報を取得しsmarty変数に値を受け渡す
         $commentDao = new CommentDao();
-        $this->smarty->assign('commentList', $commentDao->findAll());
+        $this->smarty->assign('commentList', $commentDao->findByBoardId($_GET['id']));
 
         // 入力されたコメントをinsertする
         if (!empty($_POST['message'])) {
