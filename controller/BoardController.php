@@ -26,7 +26,7 @@ class BoardController extends BaseController {
         if (!empty($_POST['message'])) {
             echo 'insert発火したよ';
             $commentDao = new CommentDao();
-            $this->smarty->assign('comment', $commentDao->insert($boardId, $_POST['message']));
+            $this->smarty->assign('comment', $commentDao->insert($_GET['id'], $_SESSION['id'], $_POST['message']));
         }
     }
 }

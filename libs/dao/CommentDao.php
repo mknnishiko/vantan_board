@@ -10,19 +10,19 @@ class CommentDao extends Database
      * @param $title
      * @return bool|string
      */
-    public function insert($boardId, $message)
+    public function insert($boardId, $userId, $message)
     {
         $comment = htmlspecialchars($message, ENT_QUOTES, "UTF-8");
 
         echo 'boardId->' . $boardId;
-        echo 'sessionId->' . $_SESSION['id'];
+        echo 'sessionId->' . $userId;
         echo 'comment->' . $comment;
 
         $sql = 'INSERT INTO `comments` (boardId, userId, comment, createdAt)';
         $sql .= ' VALUES (:boardId, :userId, :comment, NOW())';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':boardId', $boardId, \PDO::PARAM_STR);
-        $stmt->bindValue(':userId', $_SESSION['id'], PDO::PARAM_INT);
+        $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
         $stmt->bindValue(':comment', $comment, \PDO::PARAM_STR);
         $result = $stmt->execute();
         if ($result) {
