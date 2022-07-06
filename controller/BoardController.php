@@ -3,7 +3,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once  __DIR__ . '/../libs/dao/CommentDao.php';
 
-class IndexController extends BaseController {
+class BoardController extends BaseController {
 
     // 読み込むテンプレートファイルを設定
     protected $template = 'templates/board.tpl';
