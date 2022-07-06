@@ -27,9 +27,10 @@ class CommentDao extends Database
      * コメントを取得する
      * @return array
      */
-    public function findAll() {
+    public function findByBoardId($id) {
         $sql = 'SELECT * FROM `comments` LEFT JOIN `users` ON comments.userId = users.id WHERE boardId = :boardId ORDER BY comments.createdAt';
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
         $stmt->execute();
         $commentList = [];
         foreach ($stmt->fetchAll() as $data) {
