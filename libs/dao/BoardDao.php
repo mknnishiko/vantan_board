@@ -5,25 +5,24 @@ require_once __DIR__ . '/../entity/BoardEntity.php';
 
 class BoardDao extends Database
 {
-
     /**
      * 掲示板を作成する
      * @param $title
      * @return bool|string
      */
-    public function insert($title)
-    {
-        $sql = 'INSERT INTO `boards` (title, createdAt, updatedAt)';
-        $sql .= ' VALUES (:title, NOW(), NOW())';
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
-        $result = $stmt->execute();
-        if ($result) {
-            return $this->pdo->lastInsertId();
-        } else {
-            return false;
-        }
-    }
+    // public function insert($title)
+    // {
+    //     $sql = 'INSERT INTO `boards` (title, createdAt, updatedAt)';
+    //     $sql .= ' VALUES (:title, NOW(), NOW())';
+    //     $stmt = $this->pdo->prepare($sql);
+    //     $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
+    //     $result = $stmt->execute();
+    //     if ($result) {
+    //         return $this->pdo->lastInsertId();
+    //     } else {
+    //         return false;
+    //     }
+    // }
     /**
      * 掲示板を取得する
      * @return array
@@ -40,7 +39,7 @@ class BoardDao extends Database
     }
 
     /**
-     * 指定したIDの掲示板取得する
+     * 指定したIDの掲示板を取得する
      * @param $id
      * @return null|UserEntity
      */

@@ -1,59 +1,63 @@
 <?php
-session_start();
+require_once __DIR__ . '/controller/BoardController.php';
+$controller = new BoardController();
+$controller->execute($_GET['id']);
 
-$message = '';
-try {
-    $DBSERVER = 'localhost';
-    $DBUSER = 'board';
-    $DBPASSWD = 'boardpw';
-    $DBNAME = 'board';
+// session_start();
 
-    $dsn = 'mysql:'
-        . 'host=' . $DBSERVER . ';'
-        . 'dbname=' . $DBNAME . ';'
-        . 'charset=utf8';
-    $pdo = new PDO($dsn, $DBUSER, $DBPASSWD, array(PDO::ATTR_EMULATE_PREPARES => false));
-} catch (Exception $e) {
-    $message = "接続に失敗しました: {$e->getMessage()}";
-}
-$id = $_GET['id'];
-$sql = 'SELECT * FROM `boards` WHERE id = :id';
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':id', $id, PDO::PARAM_STR);
-$stmt->execute();
-$board = $stmt->fetch();
+// $message = '';
+// try {
+//     $DBSERVER = 'localhost';
+//     $DBUSER = 'board';
+//     $DBPASSWD = 'boardpw';
+//     $DBNAME = 'board';
 
-if (empty($board)) {
-    header('Location: /vantan_board/index.php');
-    exit;
-}
+//     $dsn = 'mysql:'
+//         . 'host=' . $DBSERVER . ';'
+//         . 'dbname=' . $DBNAME . ';'
+//         . 'charset=utf8';
+//     $pdo = new PDO($dsn, $DBUSER, $DBPASSWD, array(PDO::ATTR_EMULATE_PREPARES => false));
+// } catch (Exception $e) {
+//     $message = "接続に失敗しました: {$e->getMessage()}";
+// }
+// $id = $_GET['id'];
+// $sql = 'SELECT * FROM `boards` WHERE id = :id';
+// $stmt = $pdo->prepare($sql);
+// $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $board = $stmt->fetch();
 
-if (!empty($_POST['message'])) {
-    $message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
+// if (empty($board)) {
+//     header('Location: /vantan_board/index.php');
+//     exit;
+// }
 
-    $sql = 'INSERT INTO `comments` (boardId, userId, comment, createdAt)';
-    $sql .= ' VALUES (:boardId, :userId, :comment, NOW())';
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
-    $stmt->bindValue(':userId', $_SESSION['id'], PDO::PARAM_INT);
-    $stmt->bindValue(':comment', $message, PDO::PARAM_STR);
-    $result = $stmt->execute();
-    if ($result) {
-        // コメントしました
-    } else {
-        $message = '登録に失敗しました';
-    }
-}
+// if (!empty($_POST['message'])) {
+//     $message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
 
-$sql = 'SELECT * FROM `comments` LEFT JOIN `users` ON comments.userId = users.id WHERE boardId = :boardId ORDER BY comments.createdAt';
-$stmt = $pdo->prepare($sql);
-$stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
-$stmt->execute();
-$comments = $stmt->fetchAll();
+//     $sql = 'INSERT INTO `comments` (boardId, userId, comment, createdAt)';
+//     $sql .= ' VALUES (:boardId, :userId, :comment, NOW())';
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
+//     $stmt->bindValue(':userId', $_SESSION['id'], PDO::PARAM_INT);
+//     $stmt->bindValue(':comment', $message, PDO::PARAM_STR);
+//     $result = $stmt->execute();
+//     if ($result) {
+//         // コメントしました
+//     } else {
+//         $message = '登録に失敗しました';
+//     }
+// }
 
-?>
+// $sql = 'SELECT * FROM `comments` LEFT JOIN `users` ON comments.userId = users.id WHERE boardId = :boardId ORDER BY comments.createdAt';
+// $stmt = $pdo->prepare($sql);
+// $stmt->bindValue(':boardId', $id, PDO::PARAM_STR);
+// $stmt->execute();
+// $comments = $stmt->fetchAll();
 
-<!DOCTYPE html>
+// ?>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -88,5 +92,4 @@ $comments = $stmt->fetchAll();
     </div>
 <?php } ?>
 </body>
-</html>
-
+</html> -->
