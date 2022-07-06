@@ -11,11 +11,11 @@ class BoardController extends BaseController {
     // ログイン必須でなくす
     protected $isLogin = false;
 
-    protected function main($boardId)
+    protected function main()
     {
         // 掲示板情報を取得しsmarty変数に値を受け渡す
         $boardDao = new BoardDao();
-        $this->smarty->assign('board', $boardDao->findById($boardId));
+        $this->smarty->assign('board', $boardDao->findById($_GET['id']));
 
         // コメント情報を取得しsmarty変数に値を受け渡す
         $commentDao = new CommentDao();
