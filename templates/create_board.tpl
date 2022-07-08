@@ -9,7 +9,7 @@
         <h1>新規掲示板作成</h1>
         <div>
             <div style="color: red">
-                <?php echo $message; ?>
+                <p>{$message}</p>
             </div>
             <div>
                 <form action="/vantan_board/create_board.php" method="post">
