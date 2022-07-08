@@ -19,7 +19,7 @@ class CreateBoardController extends BaseController {
             $this->smarty->assign('board', $boardDao->insert($_POST['title'], $_SESSION['id']));
 
             //成功したら掲示板へリダイレクト
-            echo $this->smarty;
+            echo $this->board;
             // if ($this->smarty)
         }
 
