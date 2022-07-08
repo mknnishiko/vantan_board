@@ -7,7 +7,7 @@
     <body>
         {include file="./common/header.tpl"}
         <h1>トップ</h1>
-        <div>{$user->name}さんようこそ</div>
+        <p>{$user->name}さんようこそ</p>
         <div>
             <h2>掲示板一覧</h2>
             <ul>
