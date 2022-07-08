@@ -6,7 +6,7 @@
     </head>
     <body>
         {include file="./common/header.tpl"}
-        <h1>掲示板新規作成</h1>
+        <h1>新規掲示板作成</h1>
         <div>
             <div style="color: red">
                 <?php echo $message; ?>

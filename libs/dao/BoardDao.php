@@ -12,6 +12,8 @@ class BoardDao extends Database
      */
     public function insert($title, $userId)
     {
+        $title = htmlspecialchars($title, ENT_QUOTES, "UTF-8");
+
         $sql = 'INSERT INTO `boards` (title, userId, createdAt)';
         $sql .= ' VALUES (:title, :userId, NOW())';
         $stmt = $this->pdo->prepare($sql);

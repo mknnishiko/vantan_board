@@ -17,6 +17,10 @@ class CreateBoardController extends BaseController {
         if (!empty($_POST['title'])) {
             $boardDao = new BoardDao();
             $this->smarty->assign('board', $boardDao->insert($_POST['title'], $_SESSION['id']));
+
+            //成功したら掲示板へリダイレクト
+            echo $this->smarty;
+            // if ($this->smarty)
         }
 
     }
