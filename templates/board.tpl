@@ -14,11 +14,13 @@
                 {/foreach}
             </ul>
         </div>
+        {if !empty($user)}
         <div>
             <form action="/vantan_board/board.php?id={$board->id}" method="post">
                 <label>コメント: <input type="text" name="message"/></label><br/>
                 <input type="submit" value="コメントする">
             </form>
         </div>
+        {/if}
     </body>
 </html>
