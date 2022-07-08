@@ -28,6 +28,7 @@ abstract class BaseController
         $this->smarty->setCompileDir(__DIR__ . '/../templates_c');
         $this->userDao = new UserDao();
     }
+
     public function execute()
     {
         try {
