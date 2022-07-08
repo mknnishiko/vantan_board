@@ -10,19 +10,21 @@ class BoardDao extends Database
      * @param $title
      * @return bool|string
      */
-    // public function insert($title)
-    // {
-    //     $sql = 'INSERT INTO `boards` (title, createdAt, updatedAt)';
-    //     $sql .= ' VALUES (:title, NOW(), NOW())';
-    //     $stmt = $this->pdo->prepare($sql);
-    //     $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
-    //     $result = $stmt->execute();
-    //     if ($result) {
-    //         return $this->pdo->lastInsertId();
-    //     } else {
-    //         return false;
-    //     }
-    // }
+    public function insert($title, $userId)
+    {
+        $sql = 'INSERT INTO `boards` (title, userId, createdAt)';
+        $sql .= ' VALUES (:title, :userId, NOW())';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':title', $title, \PDO::PARAM_STR);
+        $stmt->bindValue(':userId', $userId, \PDO::PARAM_INT);
+        $result = $stmt->execute();
+        if ($result) {
+            return $this->pdo->lastInsertId();
+        } else {
+            return false;
+        }
+    }
+
     /**
      * 掲示板を取得する
      * @return array
