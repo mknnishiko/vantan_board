@@ -7,7 +7,7 @@ class CommentDao extends Database
 {
     /**
      * コメントを作成する
-     * @param $title
+     * @param $boardId $userId $message
      * @return bool|string
      */
     public function insert($boardId, $userId, $message)
@@ -27,8 +27,10 @@ class CommentDao extends Database
             return false;
         }
     }
+    
     /**
      * コメントを取得する
+     * @param $id
      * @return array
      */
     public function findByBoardId($id) {
