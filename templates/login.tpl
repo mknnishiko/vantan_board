@@ -12,7 +12,7 @@
                 {$message}
             </div>
             <div>
-                <form action="vantan_board/login.php" method="post">
+                <form action="./login.php" method="post">
                     <label>メールアドレス: <input type="email" name="email"/></label><br/>
                     <label>パスワード: <input type="password" name="password"/></label><br/>
                     <input type="submit" value="ログイン">
