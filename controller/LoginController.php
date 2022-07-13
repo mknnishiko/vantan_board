@@ -24,8 +24,8 @@ class LoginController extends BaseController {
                 $this->smarty->assign('message', 'ログインしました');
                 $_SESSION['id'] = $this->user->id;
                 $_SESSION['name'] = $this->user->name;
-                $_SESSION['email'] = $this->user->email;
-                $_SESSION['password'] = $this->user->password;
+                $_SESSION['email'] = $this->user->getEmail();
+                $_SESSION['password'] = $this->user->getPassword();
                 header('Location: ./index.php');
                 exit;
             } else {
