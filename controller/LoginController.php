@@ -20,7 +20,7 @@ class LoginController extends BaseController {
             $this->userDao = new UserDao();
             $this->user = $this->userDao->findByEmailAndPassword($this->email, $this->password);
 
-            if(!empty($user)) {
+            if(!empty($this->user)) {
                 $this->smarty->assign('message', 'ログインしました');
                 $_SESSION['id'] = $this->user['id'];
                 $_SESSION['name'] = $this->user['name'];
