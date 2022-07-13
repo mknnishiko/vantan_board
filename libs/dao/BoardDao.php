@@ -7,7 +7,7 @@ class BoardDao extends Database
 {
     /**
      * 掲示板を作成する
-     * @param $title
+     * @param $title $userId
      * @return bool|string
      */
     public function insert($title, $userId)
