@@ -35,4 +35,25 @@ class UserDao extends Database
         $user = $stmt->fetch();
         return empty($user) ? null : new UserEntity($user);
     }
+
+    /**
+     * 新規ユーザーを作成する
+     * @param $email $password　＄name
+     * @return bool|string
+     */
+    public function insert($email, $password, $name)
+    {
+        $sql = 'INSERT INTO `users` (name, email, password, createdAt, updatedAt)';
+        $sql .= ' VALUES (:name, :email, :password, NOW(), NOW())';
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $result = $stmt->execute();
+        if ($result) {
+            return $this->pdo->lastInsertId();
+        } else {
+            return false;
+        }
+    }
 }

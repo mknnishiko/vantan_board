@@ -15,13 +15,14 @@ class CreateBoardController extends BaseController {
     {
         // 入力されたタイトルをinsertする
         if (!empty($_POST['title'])) {
-            $this->boardDao = new BoardDao();
-            $this->board = $this->boardDao->insert($_POST['title'], $_SESSION['id']);
+            $boardDao = new BoardDao();
+            $board = $boardDao->insert($_POST['title'], $_SESSION['id']);
             $this->smarty->assign('board', $board);
 
             // 成功したら掲示板へリダイレクト
-            if ($this->board) {
-                header('Location: ./board.php?id=' . $this->board);
+            if ($board) {
+                $this->smarty->assign('message', '掲示板を作成しました');
+                header('Location: ./board.php?id=' . $board);
             }else {
                 $this->smarty->assign('message', '掲示板の作成に失敗しました');
             }
