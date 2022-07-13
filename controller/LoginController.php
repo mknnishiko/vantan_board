@@ -22,10 +22,10 @@ class LoginController extends BaseController {
 
             if(!empty($this->user)) {
                 $this->smarty->assign('message', 'ログインしました');
-                $_SESSION['id'] = $this->user['id'];
-                $_SESSION['name'] = $this->user['name'];
-                $_SESSION['email'] = $this->user['email'];
-                $_SESSION['password'] = $this->user['password'];
+                $_SESSION['id'] = $this->user->id;
+                $_SESSION['name'] = $this->user->name;
+                $_SESSION['email'] = $this->user->email;
+                $_SESSION['password'] = $this->user->password;
                 header('Location: ./index.php');
                 exit;
             } else {
