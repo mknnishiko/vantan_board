@@ -26,7 +26,7 @@ class LoginController extends BaseController {
                 $_SESSION['name'] = $this->user['name'];
                 $_SESSION['email'] = $this->user['email'];
                 $_SESSION['password'] = $this->user['password'];
-                header('Location: /vantan_board/index.php');
+                header('Location: ./index.php');
                 exit;
             } else {
                 $this->smarty->assign('message', 'ログインに失敗しました');
