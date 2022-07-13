@@ -3,7 +3,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once  __DIR__ . '/../libs/dao/UserDao.php';
 
-class LoginController extends BaseController {
+class RegisterController extends BaseController {
 
     // 読み込むテンプレートファイルを設定
     protected $template = 'templates/register.tpl';
