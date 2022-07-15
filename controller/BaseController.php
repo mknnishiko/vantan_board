@@ -32,9 +32,9 @@ abstract class BaseController
     public function execute()
     {
         try {
+            session_start();
             $this->beforeMain();
             // ログイン処理
-            session_start();
             $email = empty($_SESSION['email']) ? '' : $_SESSION['email'];
             $this->user = $this->userDao->findByEmail($email);
             // ログイン必須でログインしていなかったらログインページに遷移する
